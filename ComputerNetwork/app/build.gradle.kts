@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.computernetwork"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.computernetwork"

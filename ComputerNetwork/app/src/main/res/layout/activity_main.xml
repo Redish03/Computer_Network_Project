@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D67BFF"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -32,12 +32,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appNameTextView">
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/roundTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="162dp"
-            tools:layout_editor_absoluteY="124dp" />
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_shape_green"
+            android:fontFamily="@font/jua"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:text="좋음"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/roundTextView"
+            app:layout_constraintEnd_toEndOf="@+id/roundTextView"
+            app:layout_constraintStart_toStartOf="@+id/roundTextView"
+            app:layout_constraintTop_toTopOf="@+id/roundTextView" />
+
+        <ImageView
+            android:id="@+id/timerImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/roundTextView"
+            app:srcCompat="@drawable/ic_clock" />
+
+        <TextView
+            android:id="@+id/UnusedTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/jua"
+            android:text="미사용 시간"
+            android:textColor="#FEFFAC"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timerImageView"
+            app:layout_constraintStart_toEndOf="@+id/timerImageView"
+            app:layout_constraintTop_toBottomOf="@+id/roundTextView" />
+
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/jua"
+            android:text="40"
+            android:textColor="#FEFFAC"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UnusedTimeTextView" />
+
+        <Button
+            android:id="@+id/getRequestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#D67BFF"
+            android:fontFamily="@font/jua"
+            android:text="GET"
+            android:textAlignment="center"
+            android:textColor="#FEFFAC"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeTextView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
