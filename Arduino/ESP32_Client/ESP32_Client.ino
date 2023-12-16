@@ -29,20 +29,28 @@ void webSocketEvent(WStype_t type, uint8_t *payload, size_t length)
     }
 }
 
-void setup() {
-  // put your setup code here, to run once:
-//  Connect WiFi that same WiFi with connect server
-  Serial.begin(115200);
+void connectWifi(){
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while(WiFi.status() != WL_CONNECTED) {
     delay(300);
     Serial.print(".");
   }
   Serial.println("");
+}
 
+void webSocketSetting() {
   webSocket.begin("192.168.18.223", 81, "/");
   webSocket.onEvent(webSocketEvent);
   webSocket.setReconnectInterval(5000);
+}
+
+void setup() {
+  // put your setup code here, to run once:
+//  Connect WiFi that same WiFi with connect server
+  Serial.begin(115200);
+  connectWifi();
+  webSocketSetting();
+  delay(1000);
 }
 
 void loop() {
