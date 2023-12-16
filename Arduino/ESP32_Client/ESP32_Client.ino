@@ -39,7 +39,7 @@ void connectWifi(){
 }
 
 void webSocketSetting() {
-  webSocket.begin("192.168.18.223", 81, "/");
+  webSocket.begin("192.168.31.153", 81, "/");
   webSocket.onEvent(webSocketEvent);
   webSocket.setReconnectInterval(5000);
 }
