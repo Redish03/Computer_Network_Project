@@ -10,8 +10,10 @@ WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 int button_state = 0;
-unsigned long long int unused_time = 0;
-unsigned long long int prevMillis = 0;
+int led_state = LOW;
+unsigned long unused_time = 0;
+unsigned long prevMillis = 0;
+unsigned long curMillis = 0;
 
 // 전송 HTML
 const char index_html[] PROGMEM = R"rawliteral(
@@ -35,6 +37,8 @@ void handle_root(){
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  unsigned long ms = millis();
+
 
   pinMode(LED_PIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
@@ -58,15 +62,22 @@ void setup() {
 char buffer[100];
 void loop() {
   // put your main code here, to run repeatedly:
-
   button_state = digitalRead(BUTTON_PIN);
+  if(button_state == LOW) {
+    digitalWrite(LED_PIN, HIGH);
+    prevMillis = millis();
+  }
+  else {
+    digitalWrite(LED_PIN, LOW);
+  }
+  curMillis = millis();
+  unused_time = curMillis - prevMillis;
   
-  
-  server.handleClient();
+  server.handleClient();  
   webSocket.loop();
 
   // 전송 값 설정
-  sprintf(buffer, "%ld", millis());
+  sprintf(buffer, "%ld", unused_time/1000);
   // 웹 소켓으로 값 전송
   webSocket.broadcastTXT(buffer);
 }
