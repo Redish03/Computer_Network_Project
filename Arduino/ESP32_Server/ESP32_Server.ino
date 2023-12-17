@@ -13,7 +13,9 @@ WebServer server(80);
 // 소켓 생성
 WebSocketsServer webSocket = WebSocketsServer(81);
 
+// 버튼 상태 정보
 int button_state = 0;
+// led 상태 정보 
 int led_state = LOW;
 unsigned long unused_time = 0;
 unsigned long prevMillis = 0;
